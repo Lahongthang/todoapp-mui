@@ -1,24 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import TodoList from "./components/main/TodoList";
+import { createTheme, ThemeProvider } from "@mui/material";
+import Container from "@mui/material/Container";
+import Paper from "@mui/material/Paper";
+import Grid from "@mui/material/Grid";
+
+const containerTheme = createTheme({
+  components: {
+    MuiPaper: {
+      styleOverrides: {
+        root: {
+          backgroundColor: "#f2f2f2",
+          maxWidth: '922px',
+          margin: 'auto'
+        },
+      },
+    },
+  },
+});
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={containerTheme}>
+      <Container>
+        <Paper elevation={3}>
+          <Grid container>
+            <TodoList />
+          </Grid>
+        </Paper>
+      </Container>
+    </ThemeProvider>
   );
 }
 
